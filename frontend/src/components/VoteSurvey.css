@@ -1,0 +1,620 @@
+.vote-survey-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 头部 - 优雅设计 */
+.vote-survey-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.vote-survey-header h2 {
+  font-size: 2rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* 调查信息卡片 - 奢华设计 */
+.survey-info-card {
+  background: var(--gradient-primary);
+  color: #ffffff;
+  padding: 2.5rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.survey-info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--texture-overlay);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.survey-info-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), transparent);
+  pointer-events: none;
+}
+
+.survey-info-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.survey-info-card h3 {
+  font-size: 1.75rem;
+  margin: 0 0 1.25rem 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.survey-info-card .survey-description {
+  font-size: 1.0625rem;
+  opacity: 0.95;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+  font-weight: 500;
+}
+
+/* 统计信息 */
+.survey-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.9375rem;
+  opacity: 0.9;
+  margin-bottom: 0.375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 选项容器 - 精致设计 */
+.options-container {
+  background: var(--card-bg-solid);
+  padding: 2.5rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  margin-bottom: 2.5rem;
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.options-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  opacity: 0.5;
+}
+
+.options-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--texture-overlay);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.options-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.options-container h4 {
+  font-size: 1.375rem;
+  color: var(--text-primary);
+  margin: 0 0 2rem 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* 选项列表 */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* 选项项 - 高端交互 + 3D效果 */
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 1.75rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--card-bg-solid);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* 渐变填充效果 */
+.option-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(212, 165, 116, 0.2) 0%,
+    rgba(212, 165, 116, 0.1) 50%,
+    transparent 100%
+  );
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+/* 悬停效果 */
+.option-item:hover {
+  border-color: rgba(212, 165, 116, 0.6);
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.08), transparent);
+  transform: translateX(8px) translateY(-2px) scale(1.01);
+  box-shadow: 
+    0 6px 20px rgba(212, 165, 116, 0.15),
+    0 3px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.option-item:hover::before {
+  width: 100%;
+  opacity: 1;
+}
+
+/* 选中状态 - 3D高亮 + 渐变填充 */
+.option-item.selected {
+  border-color: var(--primary-color);
+  border-width: 3px;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 165, 116, 0.18) 0%,
+    rgba(212, 165, 116, 0.12) 50%,
+    rgba(212, 165, 116, 0.06) 100%
+  );
+  box-shadow: 
+    0 0 0 4px rgba(212, 165, 116, 0.2),
+    0 8px 24px rgba(212, 165, 116, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  transform: translateX(12px) translateY(-3px) scale(1.02);
+  animation: selectedPulse 2s ease-in-out infinite;
+}
+
+@keyframes selectedPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 4px rgba(212, 165, 116, 0.2),
+      0 8px 24px rgba(212, 165, 116, 0.25),
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 6px rgba(212, 165, 116, 0.3),
+      0 12px 32px rgba(212, 165, 116, 0.35),
+      0 6px 16px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+}
+
+.option-item.selected::before {
+  width: 100%;
+  opacity: 1;
+}
+
+.option-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 单选按钮 - 精致设计 */
+.option-radio {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--card-bg-solid);
+  box-shadow: var(--shadow-sm);
+}
+
+.option-item:hover .option-radio {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.1);
+}
+
+.option-item.selected .option-radio {
+  border-color: var(--primary-color);
+  background: var(--gradient-primary);
+  box-shadow: 
+    0 0 0 4px rgba(212, 165, 116, 0.15),
+    var(--shadow-md);
+}
+
+.option-radio-dot {
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* 选项内容 */
+.option-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.option-label {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.option-text {
+  font-size: 1.0625rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+}
+
+/* 投票操作按钮 */
+.vote-actions {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.cancel-btn {
+  flex: 1;
+  background: var(--card-bg-solid);
+  color: var(--text-secondary);
+  padding: 1.125rem 2rem;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-color);
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* 提交投票按钮 - 奢华设计 */
+.submit-vote-btn {
+  flex: 2;
+  background: var(--gradient-primary);
+  color: #ffffff;
+  padding: 1.125rem 2rem;
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  box-shadow: var(--shadow-lg);
+  border: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.02em;
+}
+
+.submit-vote-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.submit-vote-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent);
+  pointer-events: none;
+}
+
+.submit-vote-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+  filter: brightness(1.15);
+}
+
+.submit-vote-btn:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.submit-vote-btn:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* 隐私提示 - 精致设计 + 金色锁图标淡入动画 */
+.privacy-notice {
+  margin-top: 2.5rem;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 165, 116, 0.08) 0%,
+    rgba(123, 163, 114, 0.08) 100%
+  );
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(212, 165, 116, 0.25);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.privacy-notice::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--texture-overlay);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* 锁图标光晕效果 */
+.privacy-notice::after {
+  content: '🔒';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  opacity: 0.05;
+  filter: blur(1px);
+  pointer-events: none;
+  animation: lockGlow 3s ease-in-out infinite;
+}
+
+@keyframes lockGlow {
+  0%, 100% {
+    opacity: 0.05;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.08;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.privacy-notice p {
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .options-container,
+  .survey-info-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .vote-survey-header {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .vote-survey-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .survey-info-card {
+    padding: 2rem;
+  }
+
+  .survey-info-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .survey-stats {
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+  }
+
+  .options-container {
+    padding: 2rem;
+  }
+
+  .options-container h4 {
+    font-size: 1.25rem;
+  }
+
+  .options-list {
+    gap: 1rem;
+  }
+
+  .option-item {
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .vote-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cancel-btn,
+  .submit-vote-btn {
+    flex: 1;
+    width: 100%;
+  }
+
+  .privacy-notice {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vote-survey-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .survey-info-card {
+    padding: 1.5rem;
+  }
+
+  .survey-info-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .options-container {
+    padding: 1.5rem;
+  }
+
+  .option-item {
+    padding: 1rem 1.25rem;
+  }
+
+  .option-radio {
+    width: 24px;
+    height: 24px;
+    border-width: 2px;
+  }
+
+  .option-radio-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .option-text {
+    font-size: 1rem;
+  }
+
+  .cancel-btn,
+  .submit-vote-btn {
+    padding: 1rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .privacy-notice {
+    padding: 1rem 1.25rem;
+  }
+
+  .privacy-notice p {
+    font-size: 0.9375rem;
+  }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .option-item {
+    border-width: 3px;
+  }
+
+  .option-item.selected {
+    border-width: 4px;
+    outline: 2px solid var(--text-primary);
+  }
+
+  .option-radio {
+    border-width: 4px;
+  }
+}

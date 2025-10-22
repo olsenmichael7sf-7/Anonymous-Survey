@@ -1,0 +1,523 @@
+.create-survey-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 头部 - 优雅设计 */
+.create-survey-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.create-survey-header h2 {
+  font-size: 2rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* 返回按钮 - 精致交互 + 金色箭头动画 */
+.back-btn {
+  background: var(--card-bg-solid);
+  color: var(--text-secondary);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-color);
+  font-weight: 600;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.back-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-md);
+  transform: translateX(-6px);
+  padding-left: 1.75rem;
+}
+
+.back-btn:hover::before {
+  width: 12px;
+  left: 8px;
+}
+
+/* 表单容器 - 奢华设计 */
+.survey-form {
+  background: var(--card-bg-solid);
+  padding: 3rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.survey-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--gradient-primary);
+}
+
+.survey-form::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--texture-overlay);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.survey-form > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 表单组 */
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--card-bg-solid);
+  color: var(--text-primary);
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover {
+  border-color: var(--primary-light);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 
+    0 0 0 4px rgba(212, 165, 116, 0.15),
+    var(--shadow-md);
+  background: #ffffff;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+/* 选项输入组 - 精致设计 */
+.option-input-group {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  align-items: stretch;
+}
+
+.option-input-group input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* 删除选项按钮 */
+.remove-option-btn {
+  background: linear-gradient(135deg, var(--danger-color), #b86555);
+  color: #ffffff;
+  padding: 0 1.25rem;
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  min-width: 50px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.remove-option-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent);
+  pointer-events: none;
+}
+
+.remove-option-btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+  filter: brightness(1.1);
+}
+
+/* 添加选项按钮 */
+.add-option-btn {
+  background: linear-gradient(135deg, var(--success-color), #6b9663);
+  color: #ffffff;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  width: 100%;
+  margin-top: 0.75rem;
+  box-shadow: var(--shadow-md);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.add-option-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent);
+  pointer-events: none;
+}
+
+.add-option-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.1);
+}
+
+/* 表单行 */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* 表单提示 */
+.form-hint {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* 智能计算提示 - 金色徽章 */
+.calculation-hint {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 165, 116, 0.15) 0%,
+    rgba(201, 163, 106, 0.12) 50%,
+    rgba(184, 134, 95, 0.1) 100%
+  );
+  border: 2px solid rgba(212, 165, 116, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 0.875rem;
+  box-shadow: 0 2px 8px rgba(212, 165, 116, 0.15);
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(212, 165, 116, 0.15);
+    border-color: rgba(212, 165, 116, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(212, 165, 116, 0.3);
+    border-color: rgba(212, 165, 116, 0.5);
+  }
+}
+
+/* 表单操作区 - 高端设计 */
+.form-actions {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 2px solid var(--border-light);
+}
+
+/* 取消按钮 */
+.cancel-btn {
+  flex: 1;
+  background: var(--card-bg-solid);
+  color: var(--text-secondary);
+  padding: 1rem 2rem;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-color);
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* 提交按钮 - 奢华设计 + 加载旋转动画 */
+.submit-btn {
+  flex: 2;
+  background: var(--gradient-primary);
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  box-shadow: 
+    0 6px 20px rgba(212, 165, 116, 0.35),
+    0 3px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.02em;
+}
+
+/* 光线扫过效果 */
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+/* 高光效果 */
+.submit-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 12px 36px rgba(212, 165, 116, 0.45),
+    0 6px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  filter: brightness(1.15);
+}
+
+.submit-btn:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(-1px) scale(0.99);
+  box-shadow: 
+    0 6px 16px rgba(212, 165, 116, 0.3),
+    0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 禁用状态 */
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  filter: grayscale(0.3);
+}
+
+/* 加载动画 (创建中...) */
+.submit-btn:disabled::before {
+  left: -100%;
+  animation: loadingShine 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingShine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .survey-form {
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .create-survey-header {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .create-survey-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .survey-form {
+    padding: 2rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 0.875rem 1rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cancel-btn,
+  .submit-btn {
+    flex: 1;
+    width: 100%;
+  }
+
+  .option-input-group {
+    gap: 0.5rem;
+  }
+
+  .remove-option-btn {
+    min-width: 45px;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .create-survey-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .survey-form {
+    padding: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.9375rem;
+  }
+
+  .form-group label {
+    font-size: 0.9375rem;
+  }
+
+  .form-hint {
+    font-size: 0.875rem;
+  }
+
+  .back-btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .cancel-btn,
+  .submit-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    border-width: 3px;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 2px;
+  }
+
+  .submit-btn,
+  .cancel-btn,
+  .back-btn {
+    border: 2px solid var(--text-primary);
+  }
+}
+
+/* 自动填充样式覆盖 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--card-bg-solid) inset;
+  -webkit-text-fill-color: var(--text-primary);
+  transition: background-color 5000s ease-in-out 0s;
+}

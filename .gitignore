@@ -1,7 +1,7 @@
 # fhevm
 fhevmTemp
 
-# directories
+# Build and compilation artifacts
 .coverage_artifacts
 .coverage_cache
 .coverage_contracts
@@ -10,16 +10,73 @@ build
 cache
 coverage
 dist
-node_modules
 types
-deployments
 tmp
 
-# files
+# Dependencies
+node_modules
+frontend/node_modules
+
+# Deployment artifacts
+deployments/*
+!deployments/sepolia
+
+# Environment and configuration
 *.env
+.env.local
+.env.development
+.env.production
+
+# Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
 .DS_Store
-.pnp.*
-coverage.json
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Lock files
 pnpm-lock.yaml
 yarn.lock
+
+# Coverage reports
+coverage.json
+.nyc_output
+
+# IDE and editor files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-workspace
+
+# Package manager
+.pnp.*
+.yarn/*
+
+# Test artifacts
+.testnet
+
+# Documentation builds
+docs/.build/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
